@@ -21,7 +21,7 @@ function Auth({ setIsLoggedIn }) {
     setError('');
     setLoading(true);
     try {
-      const res = await axios.post(`<span class="math-inline">\{import\.meta\.env\.VITE\_API\_BASE\_URL\}/</span>{endpoint}`, { username, password });
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/${endpoint}`, { username, password });
       if (res.data.access_token) {
         localStorage.setItem('access_token', res.data.access_token);
         setIsLoggedIn(true);
