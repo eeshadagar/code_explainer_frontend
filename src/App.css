@@ -1,0 +1,406 @@
+/* App.css */
+
+/* Define CSS Variables for the Light Theme (your current palette) */
+:root, .light-theme {
+  --body-bg: #C9DABF;
+  --app-container-bg: #ffffff;
+  --app-container-shadow: rgba(0, 0, 0, 0.12);
+  --header-title-color: #5F6F65;
+  --header-border-color: #E0E7ED;
+  --logout-button-bg: #808D7C;
+  --logout-button-text: white;
+  --logout-button-hover: #6a746d;
+  --chat-area-bg: #fcfdff;
+  --chat-area-shadow-inset: rgba(0, 0, 0, 0.04);
+  --scrollbar-track: #E0E7ED;
+  --scrollbar-thumb: #9CA986;
+  --scrollbar-thumb-hover: #808d7c;
+  --empty-chat-message-color: #a7b5c0;
+  --user-bubble-bg: #5F6F65;
+  --user-bubble-text: white;
+  --ai-bubble-bg: #E0E7ED;
+  --ai-bubble-text: #333;
+  --message-bubble-shadow: rgba(0, 0, 0, 0.08);
+  --input-area-border-top: #E0E7ED;
+  --textarea-bg: #fcfdff;
+  --textarea-border: #9CA986;
+  --textarea-focus-border: #5F6F65;
+  --textarea-focus-shadow: rgba(95, 111, 101, 0.2);
+  --textarea-text: #333;
+  --textarea-placeholder: #a0a8b4;
+  --send-button-bg: #5F6F65;
+  --send-button-text: white;
+  --send-button-hover: #4c5a53;
+  --send-button-disabled: #a0a0a0;
+  --clear-button-bg: #808D7C;
+  --clear-button-text: white;
+  --clear-button-hover: #6a746d;
+  --clear-button-disabled: #b0b0b0;
+}
+
+/* Define CSS Variables for the Dark Theme */
+.dark-theme {
+  --body-bg: #2C3E50; /* Dark Blue-Gray */
+  --app-container-bg: #34495E; /* Slightly lighter Dark Blue-Gray */
+  --app-container-shadow: rgba(0, 0, 0, 0.3);
+  --header-title-color: #81C784; /* Light Green accent */
+  --header-border-color: #4F6070;
+  --logout-button-bg: #607D8B; /* Muted Blue-Gray */
+  --logout-button-text: #ECEFF1;
+  --logout-button-hover: #455A64;
+  --chat-area-bg: #3B4A5B; /* Darker Blue-Gray */
+  --chat-area-shadow-inset: rgba(0, 0, 0, 0.2);
+  --scrollbar-track: #34495E;
+  --scrollbar-thumb: #607D8B;
+  --scrollbar-thumb-hover: #455A64;
+  --empty-chat-message-color: #A7B5C0;
+  --user-bubble-bg: #66BB6A; /* Brighter Green */
+  --user-bubble-text: white;
+  --ai-bubble-bg: #546E7A; /* Muted Blue-Gray */
+  --ai-bubble-text: #ECEFF1; /* Light text */
+  --message-bubble-shadow: rgba(0, 0, 0, 0.2);
+  --input-area-border-top: #4F6070;
+  --textarea-bg: #3B4A5B;
+  --textarea-border: #607D8B;
+  --textarea-focus-border: #81C784;
+  --textarea-focus-shadow: rgba(129, 199, 132, 0.3);
+  --textarea-text: #ECEFF1;
+  --textarea-placeholder: #A7B5C0;
+  --send-button-bg: #81C784; /* Light Green - primary action */
+  --send-button-text: #2C3E50; /* Dark text for contrast */
+  --send-button-hover: #66BB6A;
+  --send-button-disabled: #4F6070;
+  --clear-button-bg: #607D8B;
+  --clear-button-text: #ECEFF1;
+  --clear-button-hover: #455A64;
+  --clear-button-disabled: #78909C;
+}
+
+
+/* General Body and Root Styles - Use variables */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--body-bg); /* Use variable */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* Main App Container - Use variables */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 850px;
+  height: 90vh;
+  max-height: 750px;
+  background-color: var(--app-container-bg); /* Use variable */
+  border-radius: 18px;
+  box-shadow: 0 15px 40px var(--app-container-shadow); /* Use variable */
+  padding: 25px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Header Section - Use variables */
+h1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: var(--header-title-color); /* Use variable */
+  font-size: 2em;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--header-border-color); /* Use variable */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.logout-button {
+  background-color: var(--logout-button-bg); /* Use variable */
+  color: var(--logout-button-text); /* Use variable */
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.6em;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--logout-button-hover); /* Use variable */
+  transform: translateY(-1px);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.4em; /* Adjusted size: smaller emoji */
+  cursor: pointer;
+  color: var(--header-title-color); /* Match header title color */
+  transition: color 0.3s ease, transform 0.2s ease;
+  margin-left: 15px;
+  display: flex; /* Helps center the emoji */
+  align-items: center; /* Vertically center emoji */
+  justify-content: center; /* Horizontally center emoji */
+  padding: 5px; /* Add some padding around the emoji for clickability */
+}
+
+.theme-toggle-button:hover {
+  transform: scale(1.15); /* Slightly more pronounced hover effect */
+}
+
+.theme-toggle-button:focus {
+    outline: none; /* Remove default browser outline */
+}
+
+/* Chat Area (Messages Display) - Use variables */
+.chat-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 18px;
+  background-color: var(--chat-area-bg);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Adjust or remove this line if it's creating the "odd border" effect */
+  /* If you want a very subtle internal border, consider a softer shadow or a real border */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.02); /* Softer, lighter inset shadow */
+  /* OR you could replace the box-shadow with a subtle border if you prefer: */
+  /* border: 1px solid var(--header-border-color); */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Custom Scrollbar (for Webkit browsers) - Use variables */
+.chat-area::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+  background: var(--scrollbar-track); /* Use variable */
+  border-radius: 10px;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb); /* Use variable */
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track); /* Use variable */
+}
+
+.chat-area::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover); /* Use variable */
+}
+
+/* Empty Chat Message - Use variables */
+.empty-chat-message {
+  text-align: center;
+  color: var(--empty-chat-message-color); /* Use variable */
+  margin-top: 30px;
+  font-style: italic;
+  font-size: 1.1em;
+  line-height: 1.5;
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+/* Message Bubbles - Use variables */
+.message-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+}
+
+.message-container.ai {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 14px 20px;
+  border-radius: 28px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1em;
+  line-height: 1.5;
+  box-shadow: 0 3px 8px var(--message-bubble-shadow); /* Use variable */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.message-bubble.user {
+  background-color: var(--user-bubble-bg); /* Use variable */
+  color: var(--user-bubble-text); /* Use variable */
+  border-bottom-right-radius: 10px;
+}
+
+.message-bubble.ai {
+  background-color: var(--ai-bubble-bg); /* Use variable */
+  color: var(--ai-bubble-text); /* Use variable */
+  border-bottom-left-radius: 10px;
+}
+
+/* Input Area - Use variables */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 20px;
+  /* This border-top often creates a noticeable line. Let's make it softer or remove it. */
+  border-top: 1px solid var(--input-area-border-top); /* Keep if you want a clear separator */
+  /* If you want no line here, comment out or remove the 'border-top' line above */
+  transition: border-color 0.3s ease;
+}
+
+.input-area textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid var(--textarea-border); /* This is the main border */
+  border-radius: 12px;
+  font-size: 1.05em;
+  resize: vertical;
+  min-height: 70px;
+  max-height: 150px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  color: var(--textarea-text);
+  background-color: var(--textarea-bg);
+}
+
+.input-area textarea:focus {
+  outline: none; /* VERY IMPORTANT: Removes default blue focus outline */
+  border-color: var(--textarea-focus-border);
+  /* The focus shadow can sometimes look like a thick border. Let's make it softer. */
+  box-shadow: 0 0 0 3px var(--textarea-focus-shadow); /* Thinner, softer glow */
+}
+
+.input-area textarea::placeholder {
+  color: var(--textarea-placeholder); /* Use variable */
+}
+
+/* Buttons Container */
+.input-buttons-container {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Common Button Styles - Use variables */
+.input-area button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  font-size: 1.05em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease; /* Smooth transition */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Send Button - Use variables */
+.send-button {
+  background-color: var(--send-button-bg); /* Use variable */
+  color: var(--send-button-text); /* Use variable */
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: var(--send-button-hover); /* Use variable */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.send-button:disabled {
+  background-color: var(--send-button-disabled); /* Use variable */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Clear Chat Button - Use variables */
+.clear-chat-button {
+  background-color: var(--clear-button-bg); /* Use variable */
+  color: var(--clear-button-text); /* Use variable */
+}
+
+.clear-chat-button:hover:not(:disabled) {
+  background-color: var(--clear-button-hover); /* Use variable */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.clear-chat-button:disabled {
+  background-color: var(--clear-button-disabled); /* Use variable */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    width: 95%;
+    height: 95vh;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  .message-bubble {
+    max-width: 80%;
+  }
+  .input-area textarea {
+    min-height: 60px;
+  }
+  .input-area button {
+    padding: 12px 20px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 15px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+  .chat-area {
+    padding: 12px;
+  }
+  .message-bubble {
+    max-width: 90%;
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+  .input-area {
+    gap: 10px;
+    padding-top: 15px;
+  }
+  .input-area textarea {
+    min-height: 50px;
+    font-size: 0.9em;
+    padding: 10px 12px;
+  }
+  .input-buttons-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-area button {
+    width: 100%;
+  }
+}

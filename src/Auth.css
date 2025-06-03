@@ -1,0 +1,129 @@
+/* Auth.css */
+
+/* Use variables defined in App.css / :root for theming */
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 450px; /* Max width for the auth box */
+  padding: 40px;
+  background-color: var(--app-container-bg); /* Matches app background */
+  border-radius: 18px;
+  box-shadow: 0 15px 40px var(--app-container-shadow); /* Matches app shadow */
+  box-sizing: border-box;
+  text-align: center;
+  /* Ensure smooth transitions for theme changes */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-container h2 {
+  color: var(--header-title-color); /* Matches app title color */
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between input fields */
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid var(--textarea-border); /* Matches textarea border */
+  border-radius: 12px;
+  font-size: 1.05em;
+  background-color: var(--textarea-bg); /* Matches textarea background */
+  color: var(--textarea-text); /* Matches textarea text color */
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder {
+  color: var(--textarea-placeholder); /* Matches textarea placeholder */
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+  outline: none;
+  border-color: var(--textarea-focus-border); /* Matches textarea focus border */
+  box-shadow: 0 0 0 4px var(--textarea-focus-shadow); /* Matches textarea focus shadow */
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 28px; /* Matches app buttons */
+  background-color: var(--send-button-bg); /* Use primary action color */
+  color: var(--send-button-text); /* Use primary action text color */
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px; /* Space above the button */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1); /* Matches app buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: var(--send-button-hover); /* Matches app buttons hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.auth-button:disabled {
+  background-color: var(--send-button-disabled); /* Matches app buttons disabled */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.auth-switch-link {
+  margin-top: 25px;
+  font-size: 0.95em;
+  color: var(--textarea-text); /* General text color */
+  transition: color 0.3s ease;
+}
+
+.auth-switch-link button {
+  background: none;
+  border: none;
+  color: var(--header-title-color); /* Accent color for the switch link */
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.auth-switch-link button:hover {
+  text-decoration: underline;
+  color: var(--send-button-hover);
+}
+
+/* Responsive adjustments for Auth page */
+@media (max-width: 600px) {
+  .auth-container {
+    width: 95%;
+    padding: 30px 20px;
+  }
+  .auth-container h2 {
+    font-size: 1.5em;
+  }
+  .auth-form input {
+    padding: 12px 15px;
+  }
+  .auth-button {
+    padding: 12px 15px;
+    font-size: 1em;
+  }
+}
