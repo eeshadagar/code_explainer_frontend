@@ -31,6 +31,7 @@ function App() {
   const fetchMessages = useCallback(async () => {
     setLoading(true);
     try {
+      
       const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/get_messages`, getAuthConfig());
       const loadedMessages = res.data.messages.map(msg => ({
         sender: msg.sender,
@@ -74,7 +75,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}`, { message: newUserMessage.text }, getAuthConfig());
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/chat`, { message: newUserMessage.text }, getAuthConfig());
       const aiResponse = { sender: "ai", text: res.data.explanation };
       setMessages((prevMessages) => [...prevMessages, aiResponse]);
     } catch (error) {
@@ -89,7 +90,7 @@ function App() {
   const handleClearChat = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}`, {}, getAuthConfig());
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/clear_chat`, {}, getAuthConfig());
       alert(res.data.message);
       setMessages([]);
     } catch (error) {
